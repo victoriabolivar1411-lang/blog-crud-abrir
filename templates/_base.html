@@ -7,7 +7,11 @@
 </head>
 <body>
     <header>
-        <h1>Newspaper Lecheria</h1>
+        
+
+        <a href="{% url 'article-list' %}">
+            <h1>Newspaper Lecheria</h1>
+        </a>
     </header>
     <main>
         {% block content %}
@@ -16,7 +20,7 @@
     </main>
 
     <footer>
-     
+    
     </footer>
 </body>
 </html>
