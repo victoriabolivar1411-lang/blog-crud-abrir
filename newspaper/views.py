@@ -2,7 +2,8 @@ from django.views.generic import (
                                   ListView,
                                   DetailView,
                                   CreateView,
-                                  UpdateView,)
+                                  UpdateView,    
+)     
 from .models import Article
 
 #Creatre your views here.
@@ -21,4 +22,9 @@ class ArticleCreateView(CreateView):
     template_name = 'article-create.html'
     fields = ['title', 'author', 'content']
         
-        
+class ArticleUpdateView(UpdateView):
+    model = Article
+    template_name = 'article-update.html'
+    fields = ['title', 'content']
+    
+    
