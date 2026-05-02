@@ -1,10 +1,6 @@
-from django.views.generic import (
-                                  ListView,
-                                  DetailView,
-                                  CreateView,
-                                  UpdateView,    
-)     
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
 from .models import Article
+from django.urls import reverse_lazy
 
 #Creatre your views here.
 class ArticleListView(ListView):
@@ -27,4 +23,8 @@ class ArticleUpdateView(UpdateView):
     template_name = 'article-update.html'
     fields = ['title', 'content']
     
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = 'article-delete.html'
+    success_url = reverse_lazy('article-list')
     
