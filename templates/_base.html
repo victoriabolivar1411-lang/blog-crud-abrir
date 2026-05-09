@@ -1,11 +1,10 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Newspaper Lecheria{% endblock %}</title>
+    <title>Newspaper Lecheria</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -17,17 +16,13 @@
         
             <a href="{% url 'article-create' %}">
                 <h2>Create Article</h2></a>
-                <span>
                     {% if user.is_authenticated %}
                         <p>Bienvenido, {{ user.username }}!</p>
                         <!-- Logout -->
-                        <form action ="{% url 'logout' %}" method="post">
+                        <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}
                             <button type="submit">Cerrar sesión</button>
-                        </from>
-
-
-
+                        </form>
         
                     {% else %}
                         <a href="{% url 'login' %}">Iniciar sesión</a>
@@ -36,14 +31,9 @@
                     {% endif %} 
 
     </header>
-    <main>
+
         {% block content %}
         {% endblock content %}
 
-    </main>
-
-    <footer>
-    
-    </footer>
 </body>
 </html>

@@ -1,12 +1,15 @@
- {% extends "_base.html" %}
+{% extends "_base.html" %}
 
- {% block content %}
+{% block content %}
         <h2>{{ article.title }}</h2>
         <p><strong>Autor:</strong> {{ article.author }}</p>
-        <small><strong>Fecha de publicación:</strong> {{ article.created_at }}</small>
+        <small>Fecha de publicación: {{ article.created_at }}</small>
         <p><strong>Contenido:</strong> {{ article.content }}</p>
     
-        <a href="{% url 'article-update' article.pk %}">Editar</a>
-        <a href="{% url 'article-delete' article.pk %}">Eliminar</a>    
 
-    {% endblock content %} 
+        <!-- botones de edición y eliminación solo si el usuario es el autor -->
+        {% if user.is_authenticated and user == article.author %}
+            <a href="{% url 'article-update' article.pk %}">Editar</a>
+            <a href="{% url 'article-delete' article.pk %}">Eliminar</a>
+        {% endif %}
+{% endblock content %} 
